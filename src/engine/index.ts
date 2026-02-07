@@ -1,3 +1,10 @@
+/**
+ * A minimal Petri net engine.
+ *
+ * Places are strings. Tokens are counts. Transitions move tokens
+ * from input places to output places. That's the whole thing.
+ */
+
 type Marking<P extends string> = Record<P, number>;
 
 type Transition<P extends string> = {
