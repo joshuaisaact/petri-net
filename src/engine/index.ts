@@ -5,20 +5,20 @@
  * from input places to output places. That's the whole thing.
  */
 
-type Marking<P extends string> = Record<P, number>;
+export type Marking<P extends string> = Record<P, number>;
 
-type Transition<P extends string> = {
+export type Transition<P extends string> = {
   name: string;
   inputs: P[];
   outputs: P[];
 };
 
-type PetriNet<P extends string> = {
+export type PetriNet<P extends string> = {
   transitions: Transition<P>[];
   initialMarking: Marking<P>;
 };
 
-function canFire<P extends string>(
+export function canFire<P extends string>(
   petriNet: PetriNet<P>,
   marking: Marking<P>,
   transition: Transition<P>,
@@ -26,7 +26,7 @@ function canFire<P extends string>(
   return transition.inputs.every((input) => marking[input] > 0);
 }
 
-function fire<P extends string>(
+export function fire<P extends string>(
   petriNet: PetriNet<P>,
   marking: Marking<P>,
   transition: Transition<P>,
