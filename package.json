@@ -15,6 +15,7 @@
     "contract:standard": "bun run src/examples/purchase-orders/standard.ts",
     "contract:high-value": "bun run src/examples/purchase-orders/high-value.ts",
     "contract:analyze": "bun run src/examples/purchase-orders/analyze.ts",
+    "checkout": "bun run src/examples/checkout/index.ts",
     "checkout:analyze": "bun run src/examples/checkout/analyze.ts"
   }
 }

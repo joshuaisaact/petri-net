@@ -26,6 +26,7 @@ bun run coffee:analyze        # prove every path ends with coffee
 bun run contract:standard     # three contracts, finance + legal approval
 bun run contract:high-value   # adds CEO approval layer
 bun run contract:analyze      # prove no contract gets stuck
+bun run checkout              # three customers, two items, one fails
 bun run checkout:analyze      # prove inventory can't oversell
 ```
 
