@@ -22,6 +22,7 @@ bun install
 
 ```bash
 bun run coffee                # walk through the brewing steps
+bun run coffee:analyze        # prove every path ends with coffee
 bun run contract:standard     # three contracts, finance + legal approval
 bun run contract:high-value   # adds CEO approval layer
 bun run contract:analyze      # prove no contract gets stuck
