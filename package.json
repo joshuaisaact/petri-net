@@ -12,6 +12,8 @@
   "scripts": {
     "coffee": "bun run src/examples/coffee/index.ts",
     "contract:standard": "bun run src/examples/purchase-orders/standard.ts",
-    "contract:high-value": "bun run src/examples/purchase-orders/high-value.ts"
+    "contract:high-value": "bun run src/examples/purchase-orders/high-value.ts",
+    "contract:analyze": "bun run src/examples/purchase-orders/analyze.ts",
+    "checkout:analyze": "bun run src/examples/checkout/analyze.ts"
   }
 }

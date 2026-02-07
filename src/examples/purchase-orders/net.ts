@@ -53,7 +53,7 @@ export const standardNet: PetriNet<StandardPlace> = {
     stdExecute,
   ],
   initialMarking: {
-    submitted: 3,
+    submitted: 1,
     awaitingFinance: 0,
     awaitingLegal: 0,
     financeApproved: 0,
@@ -132,7 +132,7 @@ export const highValueNet: PetriNet<HighValuePlace> = {
     hvExecute,
   ],
   initialMarking: {
-    submitted: 2,
+    submitted: 1,
     awaitingFinance: 0,
     awaitingLegal: 0,
     awaitingCeo: 0,

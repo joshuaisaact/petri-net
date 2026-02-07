@@ -40,3 +40,25 @@ export function fire<P extends string>(
   transition.outputs.forEach((output) => (newMarking[output] += 1));
   return newMarking;
 }
+
+export function reachableStates<P extends string>(
+  net: PetriNet<P>,
+): Marking<P>[] {
+  const seen: string[] = [];
+  const queue: Marking<P>[] = [net.initialMarking];
+
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    const key = JSON.stringify(current);
+    if (seen.includes(key)) continue;
+    seen.push(key);
+
+    for (const t of net.transitions) {
+      if (canFire(net, current, t)) {
+        queue.push(fire(net, current, t));
+      }
+    }
+  }
+
+  return seen.map((s) => JSON.parse(s));
+}

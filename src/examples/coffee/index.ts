@@ -29,7 +29,7 @@ const pourOver: Transition<CoffeePlace> = {
   outputs: ["coffeeReady"],
 };
 
-const makeCoffeeNet: PetriNet<CoffeePlace> = {
+const coffeeNet: PetriNet<CoffeePlace> = {
   transitions: [heatWater, grindBeans, pourOver],
   initialMarking: {
     waterCold: 1,
