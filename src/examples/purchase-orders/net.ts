@@ -7,7 +7,9 @@ type StandardPlace =
   | "awaitingFinance"
   | "awaitingLegal"
   | "financeApproved"
+  | "financeRejected"
   | "legalApproved"
+  | "legalRejected"
   | "contractExecuted";
 
 export const stdSubmit: Transition<StandardPlace> = {
@@ -20,10 +22,20 @@ export const stdApproveFinance: Transition<StandardPlace> = {
   inputs: ["awaitingFinance"],
   outputs: ["financeApproved"],
 };
+export const stdRejectFinance: Transition<StandardPlace> = {
+  name: "rejectFinance",
+  inputs: ["awaitingFinance"],
+  outputs: ["financeRejected"],
+};
 export const stdApproveLegal: Transition<StandardPlace> = {
   name: "approveLegal",
   inputs: ["awaitingLegal"],
   outputs: ["legalApproved"],
+};
+export const stdRejectLegal: Transition<StandardPlace> = {
+  name: "rejectLegal",
+  inputs: ["awaitingLegal"],
+  outputs: ["legalRejected"],
 };
 export const stdExecute: Transition<StandardPlace> = {
   name: "execute",
@@ -32,13 +44,22 @@ export const stdExecute: Transition<StandardPlace> = {
 };
 
 export const standardNet: PetriNet<StandardPlace> = {
-  transitions: [stdSubmit, stdApproveFinance, stdApproveLegal, stdExecute],
+  transitions: [
+    stdSubmit,
+    stdApproveFinance,
+    stdRejectFinance,
+    stdApproveLegal,
+    stdRejectLegal,
+    stdExecute,
+  ],
   initialMarking: {
     submitted: 3,
     awaitingFinance: 0,
     awaitingLegal: 0,
     financeApproved: 0,
+    financeRejected: 0,
     legalApproved: 0,
+    legalRejected: 0,
     contractExecuted: 0,
   },
 };
@@ -51,8 +72,11 @@ type HighValuePlace =
   | "awaitingLegal"
   | "awaitingCeo"
   | "financeApproved"
+  | "financeRejected"
   | "legalApproved"
+  | "legalRejected"
   | "ceoApproved"
+  | "ceoRejected"
   | "contractExecuted";
 
 export const hvSubmit: Transition<HighValuePlace> = {
@@ -65,15 +89,30 @@ export const hvApproveFinance: Transition<HighValuePlace> = {
   inputs: ["awaitingFinance"],
   outputs: ["financeApproved"],
 };
+export const hvRejectFinance: Transition<HighValuePlace> = {
+  name: "rejectFinance",
+  inputs: ["awaitingFinance"],
+  outputs: ["financeRejected"],
+};
 export const hvApproveLegal: Transition<HighValuePlace> = {
   name: "approveLegal",
   inputs: ["awaitingLegal"],
   outputs: ["legalApproved"],
 };
+export const hvRejectLegal: Transition<HighValuePlace> = {
+  name: "rejectLegal",
+  inputs: ["awaitingLegal"],
+  outputs: ["legalRejected"],
+};
 export const hvApproveCeo: Transition<HighValuePlace> = {
   name: "approveCeo",
   inputs: ["awaitingCeo"],
   outputs: ["ceoApproved"],
+};
+export const hvRejectCeo: Transition<HighValuePlace> = {
+  name: "rejectCeo",
+  inputs: ["awaitingCeo"],
+  outputs: ["ceoRejected"],
 };
 export const hvExecute: Transition<HighValuePlace> = {
   name: "execute",
@@ -85,8 +124,11 @@ export const highValueNet: PetriNet<HighValuePlace> = {
   transitions: [
     hvSubmit,
     hvApproveFinance,
+    hvRejectFinance,
     hvApproveLegal,
+    hvRejectLegal,
     hvApproveCeo,
+    hvRejectCeo,
     hvExecute,
   ],
   initialMarking: {
@@ -95,8 +137,11 @@ export const highValueNet: PetriNet<HighValuePlace> = {
     awaitingLegal: 0,
     awaitingCeo: 0,
     financeApproved: 0,
+    financeRejected: 0,
     legalApproved: 0,
+    legalRejected: 0,
     ceoApproved: 0,
+    ceoRejected: 0,
     contractExecuted: 0,
   },
 };
