@@ -8,5 +8,10 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "scripts": {
+    "coffee": "bun run src/examples/coffee/index.ts",
+    "contract:standard": "bun run src/examples/purchase-orders/standard.ts",
+    "contract:high-value": "bun run src/examples/purchase-orders/high-value.ts"
   }
 }
