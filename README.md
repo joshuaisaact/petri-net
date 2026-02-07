@@ -28,19 +28,3 @@ bun run contract:analyze      # prove no contract gets stuck
 bun run checkout:analyze      # prove inventory can't oversell
 ```
 
-## Structure
-
-```
-src/
-  engine/index.ts             # core: canFire, fire, reachableStates
-  examples/
-    coffee/index.ts           # sequential workflow
-    purchase-orders/
-      net.ts                  # standard + high-value net definitions
-      standard.ts             # run standard contracts
-      high-value.ts           # run high-value contracts
-      analyze.ts              # state-space analysis
-    checkout/
-      net.ts                  # checkout net definition
-      analyze.ts              # state-space analysis
-```
