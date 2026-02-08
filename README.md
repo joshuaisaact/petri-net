@@ -8,7 +8,7 @@ A Petri net engine and three worked examples, each one teaching a different conc
 
 **Contracts** teach concurrency. A purchase order fans out to finance and legal (and optionally a CEO) for parallel approval, then synchronises at a single "execute" transition. The net makes the fork/join visible.
 
-**Checkout** teaches resource contention. Three customers, two items. The net models inventory reservation, payment outcomes, and cancellation — then the analyser proves it can never oversell.
+**Checkout** teaches resource contention. Three customers, two items. The net models inventory reservation, payment outcomes, and cancellation — then the analyser proves it can never oversell. A companion `checkout:production` script shows how you'd use the same net in a real system: one net instance per order, stock tracked in an external Map (standing in for a database), and `setTimeout` simulating async payment webhooks — the "SELECT FOR UPDATE" pattern without a database.
 
 ## The analyser
 
@@ -29,7 +29,7 @@ bun run contract:high-value   # adds CEO approval layer
 bun run contract:analyser     # prove no contract gets stuck
 bun run contract:dot          # generate net diagram
 bun run checkout              # three customers, two items, one fails
+bun run checkout:production   # one-net-per-order with in-memory stock
 bun run checkout:analyser     # prove inventory can't oversell
 bun run checkout:dot          # generate net diagram
 ```
-

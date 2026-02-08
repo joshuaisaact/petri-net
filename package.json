@@ -18,6 +18,7 @@
     "contract:dot": "bun run src/examples/purchase-orders/dot.ts",
     "checkout": "bun run src/examples/checkout/index.ts",
     "checkout:analyser": "bun run src/examples/checkout/analyser.ts",
-    "checkout:dot": "bun run src/examples/checkout/dot.ts"
+    "checkout:dot": "bun run src/examples/checkout/dot.ts",
+    "checkout:production": "bun run src/examples/checkout/production.ts"
   }
 }
