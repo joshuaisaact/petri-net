@@ -4,11 +4,11 @@ A Petri net engine and three worked examples, each one teaching a different conc
 
 ## The examples
 
-**Coffee** teaches vocabulary. Places, transitions, tokens, firing — the smallest net that still does something recognisable. Heat water, grind beans, pour over.
+**Coffee** teaches vocabulary. Places, transitions, tokens, firing - the smallest net that still does something recognisable. Heat water, grind beans, pour over.
 
 **Contracts** teach concurrency. A purchase order fans out to finance and legal (and optionally a CEO) for parallel approval, then synchronises at a single "execute" transition. The net makes the fork/join visible.
 
-**Checkout** teaches resource contention. Three customers, two items. The net models inventory reservation, payment outcomes, and cancellation — then the analyser proves it can never oversell. A companion `checkout:production` script shows how you'd use the same net in a real system: one net instance per order, stock tracked in an external Map (standing in for a database), and `setTimeout` simulating async payment webhooks — the "SELECT FOR UPDATE" pattern without a database.
+**Checkout** teaches resource contention. Three customers, two items. The net models inventory reservation, payment outcomes, and cancellation - then the analyser proves it can never oversell. A companion `checkout:production` script shows how you'd use the same net in a real system: one net instance per order, stock tracked in an external Map (standing in for a database), and `setTimeout` simulating async payment webhooks - the "SELECT FOR UPDATE" pattern without a database.
 
 ## The analyser
 
