@@ -36,8 +36,8 @@ export function fire<P extends string>(
   }
 
   const newMarking = { ...marking };
-  transition.inputs.forEach((input) => (newMarking[input] -= 1));
-  transition.outputs.forEach((output) => (newMarking[output] += 1));
+  for (const input of transition.inputs) newMarking[input] -= 1;
+  for (const output of transition.outputs) newMarking[output] += 1;
   return newMarking;
 }
 
