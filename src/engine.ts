@@ -5,32 +5,32 @@
  * from input places to output places. That's the whole thing.
  */
 
-export type Marking<P extends string> = Record<P, number>;
+export type Marking<Place extends string> = Record<Place, number>;
 
-export type Transition<P extends string> = {
+export type Transition<Place extends string> = {
   name: string;
-  inputs: P[];
-  outputs: P[];
+  inputs: Place[];
+  outputs: Place[];
 };
 
-export type PetriNet<P extends string> = {
-  transitions: Transition<P>[];
-  initialMarking: Marking<P>;
+export type PetriNet<Place extends string> = {
+  transitions: Transition<Place>[];
+  initialMarking: Marking<Place>;
 };
 
-export function canFire<P extends string>(
-  petriNet: PetriNet<P>,
-  marking: Marking<P>,
-  transition: Transition<P>,
+export function canFire<Place extends string>(
+  petriNet: PetriNet<Place>,
+  marking: Marking<Place>,
+  transition: Transition<Place>,
 ): boolean {
   return transition.inputs.every((input) => marking[input] > 0);
 }
 
-export function fire<P extends string>(
-  petriNet: PetriNet<P>,
-  marking: Marking<P>,
-  transition: Transition<P>,
-): Marking<P> {
+export function fire<Place extends string>(
+  petriNet: PetriNet<Place>,
+  marking: Marking<Place>,
+  transition: Transition<Place>,
+): Marking<Place> {
   if (!canFire(petriNet, marking, transition)) {
     throw new Error(`Cannot fire transition: ${transition.name}`);
   }
@@ -41,11 +41,11 @@ export function fire<P extends string>(
   return newMarking;
 }
 
-export function reachableStates<P extends string>(
-  net: PetriNet<P>,
-): Marking<P>[] {
+export function reachableStates<Place extends string>(
+  net: PetriNet<Place>,
+): Marking<Place>[] {
   const seen: string[] = [];
-  const queue: Marking<P>[] = [net.initialMarking];
+  const queue: Marking<Place>[] = [net.initialMarking];
 
   while (queue.length > 0) {
     const current = queue.shift()!;
@@ -63,12 +63,12 @@ export function reachableStates<P extends string>(
   return seen.map((s) => JSON.parse(s));
 }
 
-export function toDot<P extends string>(
-  net: PetriNet<P>,
-  marking?: Marking<P>,
+export function toDot<Place extends string>(
+  net: PetriNet<Place>,
+  marking?: Marking<Place>,
 ): string {
   const m = marking ?? net.initialMarking;
-  const places = Object.keys(m) as P[];
+  const places = Object.keys(m) as Place[];
 
   let dot = "digraph {\n  rankdir=LR;\n\n";
 
